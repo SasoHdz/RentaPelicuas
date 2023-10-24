@@ -25,7 +25,7 @@ public class ArtemisListenerCheckTarjet {
     private JmsSender sender;
 
     /** Nombre de la cola de respuesta del microservicio. */
-    @Value("${tarjeta.queue.name.out}")
+    @Value("${cargo.queue.name.in}")
     private String outQueueName;
 
     @JmsListener(destination = "${tarjeta.queue.name.in}")
@@ -37,7 +37,7 @@ public class ArtemisListenerCheckTarjet {
         Respuesta respuesta = business.checkData(cargo);
         System.out.println("Resultado de consulta: "+respuesta);
         try {
-            sender.sendMessage(respuesta.toString(), outQueueName);
+            sender.sendMessage(cargo.toString(), outQueueName); //Pasa mensaje a siguiente cola
             System.out.println(String.format("Mensaje enviado: %s", 
                     respuesta.toString()));
         } catch(Exception e) {

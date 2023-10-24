@@ -7,16 +7,16 @@ import com.google.gson.Gson;
  */
 public class CargoTarjeta {
     
-    private String noTc;
+    private String noTC;
     private String cvv;
     private String fechaExp;
     private Float costoRenta;
     
     public String getNoTc() {
-        return noTc;
+        return noTC;
     }
     public void setNoTc(String noTc) {
-        this.noTc = noTc;
+        this.noTC = noTc;
     }
     public String getCvv() {
         return cvv;
